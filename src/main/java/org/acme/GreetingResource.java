@@ -13,4 +13,15 @@ public class GreetingResource {
     public String hello() {
         return "Hello from Quarkus REST";
     }
+
+    @GET
+    @Path("/mongodb")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String mongodb() {
+        MyEntity entity = new MyEntity();
+        entity.field = "ipv6";
+        entity.persist();
+
+        return "MongoDB documents: " + MyEntity.count();
+    }
 }

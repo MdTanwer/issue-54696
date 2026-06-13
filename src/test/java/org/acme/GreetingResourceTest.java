@@ -17,4 +17,13 @@ class GreetingResourceTest {
              .body(is("Hello from Quarkus REST"));
     }
 
+    @Test
+    void testMongoDbEndpoint() {
+        given()
+          .when().get("/hello/mongodb")
+          .then()
+             .statusCode(200)
+             .body(is("MongoDB documents: 1"));
+    }
+
 }
